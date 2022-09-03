@@ -17,12 +17,13 @@ const Pokedex = () => {
 
   useEffect(() => {
     if (optionType !== "All") {
-      const URL = `https://pokeapi.co/api/v2/type/${optionType}/`;
+      const URL = `https://pokeapi.co/api/v2/type/${optionType}`;
       axios
         .get(URL)
         .then((res) => {
           const arr = res.data.pokemon.map((e) => e.pokemon);
-          setPokemons({ results: arr });
+          const obj = { results: arr }
+          setPokemons(obj.results)
         })
         .catch((err) => console.log(err));
     } else if (pokeSearch) {
